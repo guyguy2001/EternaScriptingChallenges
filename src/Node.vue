@@ -1,5 +1,5 @@
 <template>
-    <div :style="outerStyle" class="trans-panel" style="margin-top: 17px; margin-bottom: 30px;">
+    <div :style="outerStyle" class="trans-panel" style="text-align:center; margin-top: 17px; margin-bottom: 30px;">
         <div :style="backgroundStyle" class="trans-panel-bg">
         </div>
         <div v-if="this.$slots.header" class="yellow-header">
@@ -20,7 +20,7 @@
             },
             width: {
                 type: String,
-                default: 'auto'
+                default: '100%'
             },
             height: {
                 type: String,
