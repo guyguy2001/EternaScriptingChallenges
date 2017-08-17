@@ -2,7 +2,7 @@
     <div :style="outerStyle" class="trans-panel" style="text-align:center; margin-top: 17px; margin-bottom: 30px;">
         <div :style="backgroundStyle" class="trans-panel-bg">
         </div>
-        <div v-if="this.$slots.header" class="yellow-header">
+        <div v-if="this.$slots.header" :class="headerClass">
             <slot name = "header">
             </slot>
         </div>
@@ -14,6 +14,10 @@
 <script>
     export default {
         props: {
+            headerColor: {
+                type: String,
+                default: 'yellow'
+            },
             roundness: {
                 type: String,
                 default: '5px'
@@ -24,7 +28,7 @@
             },
             height: {
                 type: String,
-                default: '50px'
+                default: '150px'
             }
         },
         data(){
@@ -32,9 +36,18 @@
                 
             }
         },
-        computed:{
+        computed: {
+
+            //change to a style?
+            headerClass() {
+                return this.headerColor.toLowerCase() + '-header';
+            },
             outerStyle() {
-                return [{ 'border-radius': this.roundness, width: this.width, height: this.height }]
+                return {
+                    'border-radius': this.roundness,
+                    width: this.width,
+                    height: this.height
+                }
             },
             backgroundStyle() {
                 return this.outerStyle;
