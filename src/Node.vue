@@ -1,9 +1,9 @@
 <template>
-    <div :style="outerStyle" class="trans-panel" style="text-align:center; margin-top: 17px; margin-bottom: 30px;">
-        <div :style="backgroundStyle" class="trans-panel-bg">
+    <div ref="container" class="trans-panel" :style="{'border-radius':'5px'}" style="text-align:center; margin-top: 17px; margin-bottom: 30px;">
+        <div class="trans-panel-bg" :style="{'border-radius':'inherit'}">
         </div>
         <div v-if="this.$slots.header" :class="headerClass">
-            <slot name = "header">
+            <slot name="header">
             </slot>
         </div>
         <slot>
@@ -18,42 +18,28 @@
                 type: String,
                 default: 'yellow'
             },
-            roundness: {
-                type: String,
-                default: '5px'
-            },
-            width: {
-                type: String,
-                default: '100%'
-            },
-            height: {
-                type: String,
-                default: '150px'
-            }
         },
-        data(){
+        data() {
             return {
-                
+
             }
         },
         computed: {
-
-            //change to a style?
             headerClass() {
                 return this.headerColor.toLowerCase() + '-header';
             },
-            outerStyle() {
-                return {
-                    'border-radius': this.roundness,
-                    width: this.width,
-                    height: this.height
-                }
-            },
-            backgroundStyle() {
-                return this.outerStyle;
-            }
         }
     }
 </script>
-<style>
+<style scoped>
+    .trans-panel-bg {
+        width: 100%;
+        height: 100%;
+    }
+    .red-header, .blue-header, .green-header, .yellow-header, .header, .header b, .trans-header {
+        font-family: 'Century Gothic', 'Didact Gothic', Arial, sans-serif;
+        font-weight: bold;
+        font-size: 16px;
+        text-transform: none;
+    }
 </style>
